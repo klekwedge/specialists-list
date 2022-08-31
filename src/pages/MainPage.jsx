@@ -1,5 +1,10 @@
+import SpecialistsList from "../Components/SpecialistList/SpecialistList";
 function MainPage() {
-  return <h1>Main Page</h1>;
+  return (
+    <div>
+      <SpecialistsList />
+    </div>
+  );
 }
 
 export default MainPage;
