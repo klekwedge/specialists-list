@@ -1,8 +1,9 @@
-import SpecialistsList from "../Components/SpecialistList/SpecialistList";
+import SpecialistList from '../Components/SpecialistList/SpecialistList';
+
 function MainPage() {
   return (
     <div>
-      <SpecialistsList />
+      <SpecialistList />
     </div>
   );
 }
