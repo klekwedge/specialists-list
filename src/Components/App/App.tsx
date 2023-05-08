@@ -8,7 +8,7 @@ const Page404 = lazy(() => import("../../pages/Page404/Page404"));
 
 function App() {
   return (
-    <div className="_container">
+    <div className="app_containter">
       <Router>
         <Suspense fallback={<Loader />}>
           <Routes>

@@ -25,7 +25,7 @@ function Search({
   };
 
   return (
-    <>
+    <div className="search__containter">
       <h2 className="specialist__search-title">Поиск</h2>
       <div className="specialist__input-container">
         <img
@@ -56,7 +56,7 @@ function Search({
           ""
         )}
       </div>
-    </>
+    </div>
   );
 }
 

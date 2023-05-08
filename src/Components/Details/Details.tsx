@@ -102,7 +102,7 @@ function Details() {
         </div>
         <div className="details__info">
           <img src={PhoneIcon} alt="phone icon" />
-          <h3>{currentUser?.phone}</h3>
+          <a href={`tel:'${currentUser.phone}`}>{currentUser.phone}</a>
         </div>
       </div>
     </div>
