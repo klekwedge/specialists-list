@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import "./SpecialistItem.scss";
+import IUser from "../../types/user";
 
-function SpecialistsItem({ user }) {
+interface SpecialistsItemProps {
+  user: IUser;
+}
+
+function SpecialistsItem({ user }: SpecialistsItemProps) {
   console.log(user);
 
   return (

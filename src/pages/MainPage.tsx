@@ -1,4 +1,4 @@
-import SpecialistList from '../Components/SpecialistList/SpecialistList';
+import SpecialistList from "../Components/SpecialistList/SpecialistList";
 
 function MainPage() {
   return (
