@@ -1,0 +1,33 @@
+.specialist__search-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #050510;
+  margin-bottom: 18px;
+}
+
+.specialist__input-container {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.specialist__search {
+  position: absolute;
+  top: 9px;
+  left: 14px;
+}
+
+.specialist__filter {
+  position: absolute;
+  top: 15px;
+  right: 24px;
+}
+
+.specialist__input {
+  padding: 10px 33px 10px 50px;
+  background: #f7f7f8;
+  border-radius: 16px;
+  width: 94%;
+  border: transparent;
+  outline: none;
+}

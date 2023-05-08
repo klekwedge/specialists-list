@@ -4,9 +4,7 @@
   align-items: center;
 }
 
-
-
-.specialist__item {
+.specialist {
   &__image {
     width: 72px;
     height: 72px;
@@ -16,10 +14,13 @@
   &__name {
     font-family: "Inter";
     font-style: normal;
+    text-decoration: none;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     color: #050510;
+    margin-bottom: 5px;
+
     & span {
       font-family: "Inter";
       font-style: normal;
