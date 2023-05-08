@@ -4,6 +4,7 @@ import SpecialistList from "../Components/SpecialistList/SpecialistList";
 import Tabs from "../Components/Tabs/Tabs";
 import { SortValues } from "../types/user";
 import InternetError from "../Components/InternetError/InternetError";
+import ConnectionRestored from "../Components/ConnectionRestored/ConnectionRestored";
 
 const tabs = [
   {
@@ -33,6 +34,7 @@ function MainPage() {
   const [inputValue, setInputValue] = useState("");
   const [sort, setSort] = useState<SortValues>("alphabet");
   const [isInternetError, setIsInternetError] = useState(false);
+  const [isConnectionRestored, setIsConnectionRestored] = useState(false);
 
   const changeSort = (newSort: SortValues) => {
     setSort(newSort);
@@ -49,6 +51,12 @@ function MainPage() {
   function checkOnlineState() {
     if (navigator.onLine) {
       setIsInternetError(false);
+      setIsConnectionRestored(true);
+
+      const timer = setTimeout(() => {
+        setIsConnectionRestored(false);
+        clearTimeout(timer);
+      }, 5000);
     } else {
       setIsInternetError(true);
     }
@@ -61,6 +69,7 @@ function MainPage() {
 
   return (
     <>
+      {isConnectionRestored ? <ConnectionRestored /> : ""}
       {isInternetError ? (
         <InternetError />
       ) : (
