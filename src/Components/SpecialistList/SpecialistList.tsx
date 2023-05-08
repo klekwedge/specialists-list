@@ -5,6 +5,7 @@ import "./SpecialistList.scss";
 import IUser, { SortValues } from "../../types/user";
 import NotFound from "../NotFound/NotFound";
 import Error from "../Error/Error";
+import Skeleton from "../Skeleton/Skeleton";
 
 interface SpecialistListProps {
   filter: string;
@@ -15,18 +16,21 @@ interface SpecialistListProps {
 function SpecialistList({ filter, search, sort }: SpecialistListProps) {
   const [users, setUsers] = useState<IUser[]>([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [filterredUsers, setFilterredUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("http://localhost:3001/users")
       .then((usersData) => {
         setUsers(usersData.data);
+        setLoading(false);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
         setError(true);
-        throw new Error("Some error occurred while sending the request!!!");
       });
   }, []);
 
@@ -63,6 +67,19 @@ function SpecialistList({ filter, search, sort }: SpecialistListProps) {
 
   if (error) {
     return <Error />;
+  }
+
+  if (loading) {
+    return (
+      <>
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </>
+    );
   }
 
   return (

@@ -27,8 +27,6 @@ const tabs = [
   },
 ];
 
-
-
 function MainPage() {
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
