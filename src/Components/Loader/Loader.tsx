@@ -2,12 +2,12 @@ import "./Loader.scss";
 
 function Loader() {
   return (
-    <div className="container">
-	<div className="blue"></div>
-	<div className="blue"></div>
-	<div className="blue"></div>
-	<div className="blue"></div>
-</div>
+    <div className="loader">
+      <div className="loader__blue-circle" />
+      <div className="loader__blue-circle" />
+      <div className="loader__blue-circle" />
+      <div className="loader__blue-circle" />
+    </div>
   );
 }
 

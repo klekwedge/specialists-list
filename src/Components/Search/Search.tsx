@@ -25,22 +25,22 @@ function Search({
   };
 
   return (
-    <div className="search__containter">
-      <h2 className="specialist__search-title">Поиск</h2>
-      <div className="specialist__input-container">
+    <div className="search">
+      <h2 className="search__title">Поиск</h2>
+      <div className="search__input-container">
         <img
-          className="specialist__search"
+          className="search__image"
           src={SearchIcon}
           alt="Search icon"
         />
         <input
           value={inputValue}
           onChange={(e) => changeInputValue(e.target.value)}
-          className="specialist__input"
+          className="search__input"
           placeholder="Введи имя, тег, почту..."
         />
         <img
-          className="specialist__filter"
+          className="search__filter"
           src={FilterIcon}
           alt="Filter icon"
           onClick={() => setIsModalOpen(true)}

@@ -8,14 +8,12 @@ interface SpecialistsItemProps {
 }
 
 function SpecialistsItem({ user }: SpecialistsItemProps) {
-  // console.log(user);
 
   return (
     <>
       {user ? (
         <li className="specialist__item specialist">
           <img
-            // onLoad={test}
             src={PlugIcon}
             alt="specialist image"
             className="specialist__image"

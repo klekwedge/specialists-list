@@ -3,12 +3,12 @@ import "./Page404.scss";
 
 function Page404() {
   return (
-    <div className="mainbox__container">
-      <div className="mainbox">
-        <div className="err">4</div>
+    <div className="page404">
+      <div className="page404__mainbox">
+        <div className="page404__err">4</div>
         <i className="far fa-question-circle fa-spin"></i>
-        <div className="err2">4</div>
-        <div className="msg">
+        <div className="page404__err2">4</div>
+        <div className="page404__msg">
           Maybe this page moved? Got deleted? Is hiding out in quarantine? Never
           existed in the first place?
           <p>

@@ -5,7 +5,7 @@
   --violet: #da00f7;
 }
 
-div.container {
+.loader {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ div.container {
   height: 100vh;
 }
 
-div.container > div {
+.loader__blue-circle {
   width: 3vw;
   height: 3vw;
   border-radius: 100%;
@@ -27,7 +27,7 @@ div.container > div {
 }
 
 
-.blue {
+.loader__blue-circle {
   background-color: var(--blue);
   animation-delay: 0.2s;
 }

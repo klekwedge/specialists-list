@@ -13,11 +13,11 @@ interface TabsProps {
 
 const Tabs = ({ tabs, activeTab, changeActiveTab }: TabsProps) => {
   return (
-    <ul className="specialist__tabs">
+    <ul className="tabs">
       {tabs.map((tab) => (
         <li
           key={tab.allias}
-          className={`specialist__tab ${
+          className={`tabs__item ${
             activeTab === tab.allias ? "_active-tab" : ""
           }`}
           onClick={() => changeActiveTab(tab.allias)}

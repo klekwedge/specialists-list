@@ -18,11 +18,11 @@ const Sort = ({ sort, title, changeSort, closeModal }: SortProps) => {
         <button type="button" className="modal__button" onClick={closeModal}>
           <img className="modal__close" src={closeIcon} alt="Close Icon" />
         </button>
-        <ul className="sort">
+        <ul className="modal__sort sort">
           <li className="sort__item">
             <input
               type="radio"
-              className="custom-radio"
+              className="sort__radio"
               name="sort"
               id="alphabet"
               value="alphabet"
@@ -40,7 +40,7 @@ const Sort = ({ sort, title, changeSort, closeModal }: SortProps) => {
               name="sort"
               id="birthday"
               value="birthday"
-              className="custom-radio"
+              className="sort__radio"
               checked={sort === "birthday"}
               onChange={() => {
                 changeSort("birthday");
