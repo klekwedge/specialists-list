@@ -75,10 +75,8 @@ function Details() {
   }
 
   if (!currentUser) {
-    return <></>;
+    return <h1></h1>;
   }
-
-  // console.log(currentUser);
 
   return (
     <div className="details">
