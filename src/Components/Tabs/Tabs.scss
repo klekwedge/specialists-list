@@ -1,0 +1,17 @@
+.specialist__tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.specialist__tab {
+  padding: 8px 12px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+._active-tab {
+  border-bottom: 3px solid #6534ff;
+}
