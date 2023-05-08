@@ -3,6 +3,8 @@ import "./Search.scss";
 import SearchIcon from "/src/assets/svg/search.svg";
 import FilterIcon from "/src/assets/svg/filter.svg";
 import Modal from "../Modal/Modal";
+import Sort from "../Sort/Sort";
+
 function Search() {
   const [inputValue, setInputValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,6 +40,7 @@ function Search() {
         />
         {isModalOpen ? (
           <Modal title={"Сортировка"} closeModal={closeModal}>
+            <Sort />
           </Modal>
         ) : (
           ""
