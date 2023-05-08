@@ -16,6 +16,7 @@ const Tabs = ({ tabs, activeTab, changeActiveTab }: TabsProps) => {
     <ul className="specialist__tabs">
       {tabs.map((tab) => (
         <li
+          key={tab.allias}
           className={`specialist__tab ${
             activeTab === tab.allias ? "_active-tab" : ""
           }`}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Search from "../Components/Search/Search";
 import SpecialistList from "../Components/SpecialistList/SpecialistList";
 import Tabs from "../Components/Tabs/Tabs";
+import { SortValues } from "../types/user";
 
 const tabs = [
   {
@@ -26,9 +27,16 @@ const tabs = [
   },
 ];
 
+
+
 function MainPage() {
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
+  const [sort, setSort] = useState<SortValues>("alphabet");
+
+  const changeSort = (newSort: SortValues) => {
+    setSort(newSort);
+  };
 
   const changeInputValue = (inputValue: string) => {
     setInputValue(inputValue);
@@ -40,15 +48,18 @@ function MainPage() {
 
   return (
     <div className="_containter">
-      <Search inputValue={inputValue}
-      changeInputValue={changeInputValue}
+      <Search
+        inputValue={inputValue}
+        sortValue={sort}
+        changeInputValue={changeInputValue}
+        changeSortValue={changeSort}
       />
       <Tabs
         tabs={tabs}
         activeTab={activeTab}
         changeActiveTab={changeActiveTab}
       />
-      <SpecialistList search={inputValue} filter={activeTab} />
+      <SpecialistList sort={sort} search={inputValue} filter={activeTab} />
     </div>
   );
 }

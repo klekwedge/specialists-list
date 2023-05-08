@@ -10,4 +10,6 @@ interface IUser {
     phone: string;
 }
 
+export type SortValues = "alphabet" | "birthday";
+
 export default IUser;

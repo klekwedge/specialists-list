@@ -35,7 +35,7 @@ function Details() {
 
   const formatDate = (date: string) => {
     const currentDate = date.split(".");
-    currentDate[1] = months[currentDate[1]];
+    currentDate[1] = months[currentDate[1] - 1];
     return currentDate.join(" ");
   };
 

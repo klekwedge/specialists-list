@@ -2,15 +2,22 @@ import { useState } from "react";
 import "./Search.scss";
 import SearchIcon from "/src/assets/svg/search.svg";
 import FilterIcon from "/src/assets/svg/filter.svg";
-import Modal from "../Modal/Modal";
 import Sort from "../Sort/Sort";
+import { SortValues } from "../../types/user";
 
 interface SearchProps {
   inputValue: string;
+  sortValue: SortValues;
+  changeSortValue: (value: SortValues) => void;
   changeInputValue: (value: string) => void;
 }
 
-function Search({ inputValue, changeInputValue }: SearchProps) {
+function Search({
+  inputValue,
+  sortValue,
+  changeInputValue,
+  changeSortValue,
+}: SearchProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -39,9 +46,12 @@ function Search({ inputValue, changeInputValue }: SearchProps) {
           onClick={() => setIsModalOpen(true)}
         />
         {isModalOpen ? (
-          <Modal title={"Сортировка"} closeModal={closeModal}>
-            <Sort />
-          </Modal>
+          <Sort
+            title={"Сортировка"}
+            sort={sortValue}
+            closeModal={closeModal}
+            changeSort={changeSortValue}
+          />
         ) : (
           ""
         )}
