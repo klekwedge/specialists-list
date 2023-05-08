@@ -11,8 +11,6 @@ interface SortProps {
 }
 
 const Sort = ({ sort, title, changeSort, closeModal }: SortProps) => {
-
-
   return (
     <div className="modal" onClick={closeModal}>
       <section className="modal__main" onClick={(e) => e.stopPropagation()}>
@@ -28,8 +26,11 @@ const Sort = ({ sort, title, changeSort, closeModal }: SortProps) => {
               name="sort"
               id="alphabet"
               value="alphabet"
-              checked={sort === 'alphabet'}
-              onChange={() => changeSort("alphabet")}
+              checked={sort === "alphabet"}
+              onChange={() => {
+                changeSort("alphabet");
+                closeModal();
+              }}
             />
             <label htmlFor="alphabet">По алфавиту</label>
           </li>
@@ -40,8 +41,11 @@ const Sort = ({ sort, title, changeSort, closeModal }: SortProps) => {
               id="birthday"
               value="birthday"
               className="custom-radio"
-              checked={sort === 'birthday'}
-              onChange={() => changeSort("birthday")}
+              checked={sort === "birthday"}
+              onChange={() => {
+                changeSort("birthday");
+                closeModal();
+              }}
             />
             <label htmlFor="birthday">По дню рождения</label>
           </li>

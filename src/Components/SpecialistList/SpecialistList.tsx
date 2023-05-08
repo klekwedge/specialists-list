@@ -4,6 +4,7 @@ import SpecialistsItem from "../SpecialistItem/SpecialistItem";
 import "./SpecialistList.scss";
 import IUser, { SortValues } from "../../types/user";
 import NotFound from "../NotFound/NotFound";
+import Error from "../Error/Error";
 
 interface SpecialistListProps {
   filter: string;
@@ -13,8 +14,8 @@ interface SpecialistListProps {
 
 function SpecialistList({ filter, search, sort }: SpecialistListProps) {
   const [users, setUsers] = useState<IUser[]>([]);
+  const [error, setError] = useState(false);
   const [filterredUsers, setFilterredUsers] = useState<IUser[]>([]);
-
 
   useEffect(() => {
     axios
@@ -24,6 +25,7 @@ function SpecialistList({ filter, search, sort }: SpecialistListProps) {
       })
       .catch((e) => {
         console.log(e);
+        setError(true);
         throw new Error("Some error occurred while sending the request!!!");
       });
   }, []);
@@ -43,7 +45,7 @@ function SpecialistList({ filter, search, sort }: SpecialistListProps) {
       );
     }
 
-    if (sort === 'birthday') {
+    if (sort === "birthday") {
       listAfterFilter = listAfterFilter.sort((a, b) =>
         a.birthday > b.birthday ? 1 : -1
       );
@@ -53,10 +55,15 @@ function SpecialistList({ filter, search, sort }: SpecialistListProps) {
       listAfterFilter.filter(
         (item) =>
           item.firstName.toLowerCase().includes(search.toLowerCase()) ||
-          item.lastName.toLowerCase().includes(search.toLowerCase())
+          item.lastName.toLowerCase().includes(search.toLowerCase()) ||
+          item.userTag.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [users, filter, search, sort]);
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <ul className="specialist__list">

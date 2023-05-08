@@ -1,0 +1,39 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+}
+
+.error__image {
+  margin-bottom: 8px;
+}
+
+.error__title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  color: #050510;
+  margin-bottom: 5px;
+}
+
+.error__subtitle {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #97979b;
+  margin-bottom: 5px;
+}
+
+.error__button {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #6534ff;
+  background: transparent;
+  border: none;
+  outline: none;
+}
