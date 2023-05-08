@@ -26,19 +26,29 @@ const tabs = [
   },
 ];
 
-
 function MainPage() {
   const [activeTab, setActiveTab] = useState("all");
+  const [inputValue, setInputValue] = useState("");
+
+  const changeInputValue = (inputValue: string) => {
+    setInputValue(inputValue);
+  };
 
   const changeActiveTab = (tabAllias: string) => {
-    setActiveTab(tabAllias)
-  }
+    setActiveTab(tabAllias);
+  };
 
   return (
     <div className="_containter">
-      <Search />
-      <Tabs tabs={tabs} activeTab={activeTab} changeActiveTab={changeActiveTab}/>
-      <SpecialistList filter={activeTab}/>
+      <Search inputValue={inputValue}
+      changeInputValue={changeInputValue}
+      />
+      <Tabs
+        tabs={tabs}
+        activeTab={activeTab}
+        changeActiveTab={changeActiveTab}
+      />
+      <SpecialistList search={inputValue} filter={activeTab} />
     </div>
   );
 }

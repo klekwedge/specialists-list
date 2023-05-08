@@ -3,12 +3,14 @@ import axios from "axios";
 import SpecialistsItem from "../SpecialistItem/SpecialistItem";
 import "./SpecialistList.scss";
 import IUser from "../../types/user";
+import NotFound from "../NotFound/NotFound";
 
 interface SpecialistListProps {
   filter: string;
+  search: string;
 }
 
-function SpecialistList({ filter }: SpecialistListProps) {
+function SpecialistList({ filter, search }: SpecialistListProps) {
   const [users, setUsers] = useState<IUser[]>([]);
   const [filterredUsers, setFilterredUsers] = useState<IUser[]>([]);
 
@@ -25,20 +27,34 @@ function SpecialistList({ filter }: SpecialistListProps) {
   }, []);
 
   useEffect(() => {
+    let listAfterFilter: IUser[];
+
     if (filter === "all") {
-      setFilterredUsers(
-        users.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      listAfterFilter = users.sort((a, b) =>
+        a.firstName > b.firstName ? 1 : -1
       );
     } else {
-      setFilterredUsers(users.filter((user) => user.department === filter));
+      listAfterFilter = users.filter((user) => user.department === filter);
     }
-  }, [users, filter]);
+
+    setFilterredUsers(
+      listAfterFilter.filter(
+        (item) =>
+          item.firstName.toLowerCase().includes(search.toLowerCase()) ||
+          item.lastName.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [users, filter, search]);
 
   return (
     <ul className="specialist__list">
-      {filterredUsers.map((user) => (
-        <SpecialistsItem key={user.id} user={user} />
-      ))}
+      {filterredUsers.length === 0 && search !== "" ? (
+        <NotFound />
+      ) : (
+        filterredUsers.map((user) => (
+          <SpecialistsItem key={user.id} user={user} />
+        ))
+      )}
     </ul>
   );
 }

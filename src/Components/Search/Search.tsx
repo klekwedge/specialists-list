@@ -5,16 +5,16 @@ import FilterIcon from "/src/assets/svg/filter.svg";
 import Modal from "../Modal/Modal";
 import Sort from "../Sort/Sort";
 
-function Search() {
-  const [inputValue, setInputValue] = useState("");
+interface SearchProps {
+  inputValue: string;
+  changeInputValue: (value: string) => void;
+}
+
+function Search({ inputValue, changeInputValue }: SearchProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
-
-  const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
   };
 
   return (
@@ -28,7 +28,7 @@ function Search() {
         />
         <input
           value={inputValue}
-          onChange={changeInputValue}
+          onChange={(e) => changeInputValue(e.target.value)}
           className="specialist__input"
           placeholder="Введи имя, тег, почту..."
         />
