@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.scss";
 
 const MainPage = lazy(() => import("../../pages/MainPage"));
 const DetailsPage = lazy(() => import("../../pages/DetailsPage"));
@@ -8,7 +7,7 @@ const Page404 = lazy(() => import("../../pages/Page404"));
 
 function App() {
   return (
-    <div className='app'>
+    <div className='_container'>
       <Router>
         <Suspense fallback={<h1>loading...</h1>}>
           <Routes>

@@ -2,12 +2,17 @@ import { useState } from "react";
 import "./Search.scss";
 import SearchIcon from "/src/assets/svg/search.svg";
 import FilterIcon from "/src/assets/svg/filter.svg";
-
+import Modal from "../Modal/Modal";
 function Search() {
   const [inputValue, setInputValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
+    setInputValue(e.target.value);
   };
 
   return (
@@ -29,7 +34,14 @@ function Search() {
           className="specialist__filter"
           src={FilterIcon}
           alt="Filter icon"
+          onClick={() => setIsModalOpen(true)}
         />
+        {isModalOpen ? (
+          <Modal title={"Сортировка"} closeModal={closeModal}>
+          </Modal>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

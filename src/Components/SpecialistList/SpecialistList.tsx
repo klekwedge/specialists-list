@@ -26,7 +26,9 @@ function SpecialistList({ filter }: SpecialistListProps) {
 
   useEffect(() => {
     if (filter === "all") {
-      setFilterredUsers(users);
+      setFilterredUsers(
+        users.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      );
     } else {
       setFilterredUsers(users.filter((user) => user.department === filter));
     }
