@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SpecialistsItem from "../SpecialistItem/SpecialistItem";
-import './SpecialistList.scss'
+import "./SpecialistList.scss";
+import IUser from "../../types/user";
 
-function SpecialistList() {
-  const [users, setUsers] = useState([]);
+interface SpecialistListProps {
+  filter: string;
+}
+
+function SpecialistList({ filter }: SpecialistListProps) {
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [filterredUsers, setFilterredUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
     axios
@@ -18,11 +24,19 @@ function SpecialistList() {
       });
   }, []);
 
+  useEffect(() => {
+    if (filter === "all") {
+      setFilterredUsers(users);
+    } else {
+      setFilterredUsers(users.filter((user) => user.department === filter));
+    }
+  }, [users, filter]);
+
   return (
-    <ul className='specialist__list'>
-      {users.length > 0
-        ? users.map((user) => <SpecialistsItem key={user.id} user={user} />)
-        : null}
+    <ul className="specialist__list">
+      {filterredUsers.map((user) => (
+        <SpecialistsItem key={user.id} user={user} />
+      ))}
     </ul>
   );
 }

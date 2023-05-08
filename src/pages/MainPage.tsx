@@ -14,11 +14,7 @@ const tabs = [
   },
   {
     name: "Analysts",
-    allias: "analyst",
-  },
-  {
-    name: "Managers",
-    allias: "manager",
+    allias: "analytics",
   },
   {
     name: "iOS",
@@ -42,7 +38,7 @@ function MainPage() {
     <div className="_containter">
       <Search />
       <Tabs tabs={tabs} activeTab={activeTab} changeActiveTab={changeActiveTab}/>
-      <SpecialistList />
+      <SpecialistList filter={activeTab}/>
     </div>
   );
 }
